@@ -1,0 +1,22 @@
+@import "../../styles/colors";
+
+.container-login {
+  height: 100vh;
+  background-color: $color-asphalt-950;
+  color: white;
+  display: grid;
+  .parent {
+    width: 80%;
+    height: 50%;
+    margin: auto auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+    background-color: $color-asphalt-600;
+    border-radius: 50px;
+    .img-container {
+        border-radius: 50px;
+        background-color: $color-asphalt-900;
+    }
+  }
+}

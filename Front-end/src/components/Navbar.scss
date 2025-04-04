@@ -1,0 +1,44 @@
+@use "../styles/colors" as *;
+@use "../styles/fonts" as *;
+
+.nav-bar-container {
+  width: 300px;
+  height: 100vh;
+  background-color: $asph-950;
+  padding: 20px 0;
+  .nav-bar-option {
+    display: flex;
+    justify-content: center;
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    li {
+      border-radius: 18px;
+      list-style: none;
+      background: linear-gradient(270deg, $asph-400, $asph-700);
+      border: 1px solid $asph-700;
+      box-shadow: 0px 0px 8px $asph-600;
+      transition: all 1s ease-out;
+      &:hover{
+        transition: all 1s ease-out;
+      }
+      a {
+        padding: 15px 30px;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        text-decoration: none;
+        color: $asph-50;
+        font-size: 22px;
+        font-family: $fuente-secundaria;
+        font-weight: 900;
+        letter-spacing: 1px;
+        i {
+          font-size: 30px;
+        }
+      }
+    }
+  }
+}

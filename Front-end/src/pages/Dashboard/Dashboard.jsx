@@ -1,9 +1,10 @@
 import { Outlet } from "react-router-dom";
+import { Navbar } from "../../components/Navbar";
 
 export const Dashboard = () => {
   return (
     <>
-      <h1>Navbar</h1>
+      <Navbar/>
       <Outlet />
     </>
   );

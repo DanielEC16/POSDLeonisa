@@ -1,10 +1,10 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Dashboard } from "./pages/Dashboard/Dashboard";
 import { Login } from "./pages/Login/Login";
-import "./App.scss";
 import { Home } from "./pages/Dashboard/views/Home";
 import { Productos } from "./pages/Dashboard/views/Productos";
 import { Clientes } from "./pages/Dashboard/views/Clientes";
+import "./App.scss";
 
 function App() {
   return (

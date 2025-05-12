@@ -10,7 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "bootstrap": "^5.3.5",
+    "html2pdf.js": "^0.10.3",
     "react": "^19.0.0",
+    "react-bootstrap": "^2.10.9",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.4.1",
     "sass": "^1.86.1"
@@ -25,5 +28,6 @@
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
     "vite": "^6.2.0"
-  }
+  },
+  "packageManager": "pnpm@8.8.0+sha512.798e6b322669ce63c8da856bd62ad1f7b6f36f4dfaa0ac025af2bdd700d09dd5dca943e5cad3edac5d1b3baebc4b2c3fb80fbb8537f936733c32be2ec7805144"
 }

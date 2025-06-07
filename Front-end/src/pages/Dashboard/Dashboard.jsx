@@ -1,16 +1,18 @@
 import { Outlet } from "react-router-dom";
-import { Navbar } from "../../components/Navbar";
 import "./Dashboard.scss";
-import { Navigator } from "../../components/Navigator";
+import { Sidebar } from "../../components/Sidebar";
 export const Dashboard = () => {
   return (
     <>
       <div className="container-fluid">
         <div className="row">
-          <Navigator />
-          <div className="col-md-9 ms-sm-auto col-lg-10">
-          <Outlet />
+
+          <Sidebar />
+
+          <div className="col">
+            a
           </div>
+
         </div>
       </div>
     </>

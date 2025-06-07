@@ -1,0 +1,117 @@
+@use "../styles/colors" as *;
+@use "../styles/fonts" as *;
+
+.row .sidebar-container {
+    width: 270px;
+    height: 100vh;
+    background-color: #fff;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px 20px;
+}
+
+.first-section {
+
+    .perfil-container {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
+        img {
+            height: 70px;
+            border-radius: 15px;
+            object-fit: cover;
+            object-position: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .perfil-info {
+
+            h2 {
+                font-weight: 600;
+                font-size: 20px;
+                letter-spacing: 1px;
+                margin-bottom: 0;
+            }
+
+            p {
+                font-family: $fuente-secundaria;
+                font-size: 15px;
+                margin-bottom: 0;
+            }
+        }
+        i{
+            font-size: 25px;
+            font-weight: 900;
+            cursor: pointer;
+        }
+    }
+
+    .option-container {
+        ul {
+            list-style: none;
+            padding-left: 0;
+
+            a {
+                font-size: 20px;
+                font-family: $fuente-secundaria;
+                font-weight: 500;
+                text-decoration: none;
+                color: $asph-950;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 10px 20px;
+                border-radius: 10px;
+                letter-spacing: 2px;
+                opacity: .9;
+                i {
+                    font-size: 25px;
+                }
+
+                &:hover {
+                    background: linear-gradient(to right, $asph-700, $asph-500, $asph-300);
+                    color: $asph-50;
+                    cursor: pointer;
+                }
+            }
+        }
+
+    }
+}
+
+.second-section .user-configuration {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    .config {
+        background-color: #444343d8;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    .logout {
+        background-color: #c00606ee;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    a {
+        font-size: 20px;
+        font-family: $fuente-secundaria;
+        font-weight: 900;
+        text-decoration: none;
+        color: $asph-50;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 20px;
+        border-radius: 10px;
+        letter-spacing: 2px;
+    }
+}

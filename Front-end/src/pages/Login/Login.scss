@@ -1,8 +1,8 @@
-@import "../../styles/colors";
+@use "../../styles/colors" as *;
 
 .container-login {
   height: 100vh;
-  background-color: $color-asphalt-950;
+  background-color: $asph-950;
   color: white;
   display: grid;
   .parent {
@@ -12,11 +12,11 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 35px;
-    background-color: $color-asphalt-600;
+    background-color: $asph-400;
     border-radius: 50px;
     .img-container {
         border-radius: 50px;
-        background-color: $color-asphalt-900;
+        background-color: $asph-900;
     }
   }
 }

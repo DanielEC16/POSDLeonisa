@@ -1,0 +1,51 @@
+@use "../../../styles/colors" as *;
+@use "../../../styles/fonts" as *;
+.cards-container {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  .card {
+    padding: 5px;
+    border-radius: 25px;
+    border: none;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.137);
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      .card-information {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: $fuente-secundaria;
+        h3 {
+          font-size: 45px;
+          font-weight: 600;
+        }
+        .fa-dollar-sign {
+          background: linear-gradient(
+            135deg,
+            rgb(16, 185, 129),
+            rgb(5, 150, 105)
+          );
+          color: #fff;
+          padding: 10px 15px;
+          border-radius: 10px;
+          font-weight: 100;
+          font-size: 30px;
+        }
+      }
+    }
+  }
+}
+
+.grafics-container {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 5fr));
+  .card {
+    border-radius: 25px;
+    border: none;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.137);
+  }
+}

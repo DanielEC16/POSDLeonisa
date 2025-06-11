@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import "./Sidebar.scss"
+
 export const Sidebar = () => {
+    const [active, setActive] = useState(true);
+
     const option = [
         {
             name: "Dashboard",
@@ -19,15 +23,18 @@ export const Sidebar = () => {
         }
     ]
     return (
-        <div className="sidebar-container">
+        <div className={`sidebar-container ${active ? "" : "hidden"}`}>
             <div className="first-section">
                 <div className="perfil-container">
                     <img src="https://www.strikegently.co/cdn/shop/files/penguin.png?v=1737571513" alt="user" />
                     <div className="perfil-info">
-                        <h2>DanielCairo</h2>
+                        <h2>Daniel Cairo</h2>
                         <p>Rol : Admin</p>
                     </div>
-                    <i className="fa-solid fa-x"></i>
+                    <i className={
+                        active ? "fa-solid fa-x" : "fa-solid fa-bars"
+                    }
+                    onClick={() => setActive(!active)}></i>
                 </div>
                 <hr />
                 <div className="option-container">
@@ -55,8 +62,8 @@ export const Sidebar = () => {
                         <span>Configuracion</span>
                     </Link>
                     <Link className="logout" to="/dashboard/exit">
-                            <i className="fa-solid fa-right-from-bracket"></i>
-                            <span>Logout</span>
+                        <i className="fa-solid fa-right-from-bracket"></i>
+                        <span>Logout</span>
                     </Link>
                 </div>
             </div>

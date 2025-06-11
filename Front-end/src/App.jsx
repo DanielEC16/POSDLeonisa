@@ -10,12 +10,18 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Navigate to = "/login"/>} />
-        <Route path="/login" element={<Login/>} />
+        {/* Rutas para Login */}
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<Login />} />
+        
+        {/* Rutas del Dashboard */}
         <Route path="/dashboard" element={<Dashboard />}>
-          <Route path="inicio" element={<Home/>} />
-          <Route path="productos" element={<Productos/>} />
-          <Route path="clientes" element={<Clientes/>} />
+          {/* Rutas hacia vista Home */}
+          <Route path="" element={<Home />} />
+          {/* Rutas hacia vista Productos */}
+          <Route path="productos" element={<Productos />} />
+          {/* Rutas hacia vista Clientes */}
+          <Route path="clientes" element={<Clientes />} />
         </Route>
       </Routes>
     </>

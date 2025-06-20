@@ -16,13 +16,28 @@ public class Users {
     private String usuario;
     @Column(name = "password")
     private String password;
+
     @Column(name = "nombre")
     private String nombre;
+
     @Column(name = "apellido")
     private String apellido;
+
     @Column(name = "dni")
     private String dni;
-    @OneToOne
-    @JoinColumn(name = "rol_id")
-    private Roles roles;
+    @Column(name = "is_enabled")
+    private boolean isEnabled;
+
+    @Column(name = "account_No_Expired")
+    private boolean accountNoExpired;
+
+    @Column(name = "account_No_Locked")
+    private boolean accountNoLocked;
+
+    @Column(name = "credential_No_Expired")
+    private boolean credentialNoExpired;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "role_id", nullable = false)
+    private Role role;
 }

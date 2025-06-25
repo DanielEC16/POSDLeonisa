@@ -1,38 +1,26 @@
 package com.dleonisa.dleonisa.back_end.controller;
 
 import com.dleonisa.dleonisa.back_end.modelo.dto.AuthRequest;
-import com.dleonisa.dleonisa.back_end.util.JwtUtils;
+import com.dleonisa.dleonisa.back_end.modelo.dto.AuthResponse;
+import com.dleonisa.dleonisa.back_end.service.UsersService;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Map;
-
 @RestController
 @RequestMapping("/auth")
 public class AuthenticatioController {
 
-    private final AuthenticationManager authManager;
-    private final JwtUtils jwtUtils;
+    @Autowired
+    private UsersService usersService;
 
-    public AuthenticatioController(AuthenticationManager authManager, JwtUtils jwtUtils) {
-        this.authManager = authManager;
-        this.jwtUtils = jwtUtils;
-    }
-    @PostMapping("/login")
-    public ResponseEntity<Map<String, String>> login(@RequestBody AuthRequest authRequest) {
-        Authentication authentication = authManager.authenticate(
-                new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
-        );
-
-        String token = jwtUtils.generateToken((UserDetails) authentication.getPrincipal());
-
-        return ResponseEntity.ok(Map.of("token", token));
+    @PostMapping("/log-in")
+    public ResponseEntity<AuthResponse> login(@RequestBody @Valid AuthRequest userRequest){
+        return new ResponseEntity<>(this.usersService.loginUser(userRequest), HttpStatus.OK);
     }
 }

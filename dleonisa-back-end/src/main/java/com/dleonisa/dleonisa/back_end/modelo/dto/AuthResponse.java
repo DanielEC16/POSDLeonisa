@@ -5,12 +5,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
         "username",
         "message",
-        "jwt",
-        "status"
+        "jwt"
 })
 public record AuthResponse(String username,
                            String message,
-                           String jwt,
-                           boolean status) {
+                           String jwt) {
 
 }

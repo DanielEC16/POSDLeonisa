@@ -1,11 +1,7 @@
 package com.dleonisa.dleonisa.back_end.modelo.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.validation.constraints.NotBlank;
 
-@Getter
-@Setter
-public class AuthRequest {
-    private String username;
-    private String password;
+public record AuthRequest(@NotBlank String username,
+                          @NotBlank String password) {
 }

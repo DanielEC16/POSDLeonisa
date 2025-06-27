@@ -1,19 +1,23 @@
-package com.dleonisa.dleonisa.back_end.modelo;
+package com.dleonisa.dleonisa.back_end.modelo.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "usuarios")
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
+
     @Column(name = "usuario")
     private String username;
+
     @Column(name = "password")
     private String password;
 

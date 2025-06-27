@@ -1,7 +1,8 @@
 package com.dleonisa.dleonisa.back_end.controller;
 
-import com.dleonisa.dleonisa.back_end.modelo.dto.AuthRequest;
-import com.dleonisa.dleonisa.back_end.modelo.dto.AuthResponse;
+import com.dleonisa.dleonisa.back_end.modelo.dto.auth.AuthCreateUser;
+import com.dleonisa.dleonisa.back_end.modelo.dto.auth.AuthRequest;
+import com.dleonisa.dleonisa.back_end.modelo.dto.auth.AuthResponse;
 import com.dleonisa.dleonisa.back_end.service.UsersService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,11 @@ public class AuthenticatioController {
 
     @Autowired
     private UsersService usersService;
+
+    @PostMapping("/sign-up")
+    public ResponseEntity<AuthResponse> register(@RequestBody @Valid AuthCreateUser authCreateUser){
+        return new ResponseEntity<>(this.usersService.createUser(authCreateUser),HttpStatus.OK);
+    }
 
     @PostMapping("/log-in")
     public ResponseEntity<AuthResponse> login(@RequestBody @Valid AuthRequest userRequest){

@@ -1,8 +1,10 @@
 package com.dleonisa.dleonisa.back_end.service;
 
-import com.dleonisa.dleonisa.back_end.modelo.Users;
-import com.dleonisa.dleonisa.back_end.modelo.dto.AuthRequest;
-import com.dleonisa.dleonisa.back_end.modelo.dto.AuthResponse;
+import com.dleonisa.dleonisa.back_end.modelo.entity.Role;
+import com.dleonisa.dleonisa.back_end.modelo.entity.Users;
+import com.dleonisa.dleonisa.back_end.modelo.dto.auth.AuthCreateUser;
+import com.dleonisa.dleonisa.back_end.modelo.dto.auth.AuthRequest;
+import com.dleonisa.dleonisa.back_end.modelo.dto.auth.AuthResponse;
 import com.dleonisa.dleonisa.back_end.repository.IRole;
 import com.dleonisa.dleonisa.back_end.repository.IUser;
 import com.dleonisa.dleonisa.back_end.util.JwtUtils;
@@ -21,8 +23,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsersService implements UserDetailsService {
@@ -35,6 +37,9 @@ public class UsersService implements UserDetailsService {
 
     @Autowired
     private IUser iUser;
+
+    @Autowired
+    private IRole iRole;
 
     @Override
     public UserDetails loadUserByUsername(String username) {
@@ -51,9 +56,47 @@ public class UsersService implements UserDetailsService {
                 authorities);
     }
 
+    public AuthResponse createUser(AuthCreateUser createRoleRequest) {
+
+        String username = createRoleRequest.username();
+        String password = createRoleRequest.password();
+        String rolesRequest = createRoleRequest.role();
+        String nombre = createRoleRequest.nombre();
+        String apellido = createRoleRequest.apellido();
+        String dni = createRoleRequest.dni();
+
+        Optional<Role> role = iRole.findByName(rolesRequest);
+
+        if (role.isEmpty()) {
+            throw new IllegalArgumentException("The roles specified does not exist.");
+        }
+
+        Users usuarioNuevo = Users.builder()
+                .username(username)
+                .password(passwordEncoder.encode(password))
+                .role(role.get())
+                .nombre(nombre)
+                .apellido(apellido)
+                .dni(dni)
+                .build();
+
+        Users userSaved = iUser.save(usuarioNuevo);
+
+        List<SimpleGrantedAuthority> authorities = List.of(
+                new SimpleGrantedAuthority("ROLE_"+role)
+        );
+
+        Authentication authentication = new UsernamePasswordAuthenticationToken(userSaved, null, authorities);
+
+        AuthResponse authResponse = new AuthResponse(username, "Usuario creado correctamente con rol correspondiente", null);
+
+        return authResponse;
+    }
+
     public AuthResponse loginUser(AuthRequest authRequest){
         String username = authRequest.username();
         String password = authRequest.password();
+
         Authentication authentication = this.authenticate(username,password);
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
@@ -61,6 +104,7 @@ public class UsersService implements UserDetailsService {
         AuthResponse authResponse = new AuthResponse(username,"Usuario logueado",accesToken);
         return authResponse;
     }
+
     public Authentication authenticate(String username,String password){
         UserDetails userDetails = this.loadUserByUsername(username);
         if(userDetails ==null){

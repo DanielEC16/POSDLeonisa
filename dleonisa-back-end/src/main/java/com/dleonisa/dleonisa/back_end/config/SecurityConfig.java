@@ -36,12 +36,19 @@ public class SecurityConfig {
                 .csrf(csrf->csrf.disable())
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                /*
                 .authorizeHttpRequests(http ->{
-
                     http.requestMatchers(HttpMethod.POST,"/auth/**").permitAll();
-
-                    http.requestMatchers(HttpMethod.POST,"/method/post").hasAnyRole("USER");
                 })
+                */
+                .authorizeHttpRequests(auth -> auth
+                        // Permitir acceso público a login y registro (o lo que pongas en /auth/**)
+                        .requestMatchers("/auth/**").permitAll()
+
+                        // Requiere autenticación para todo lo demás
+                        .anyRequest().authenticated()
+                )
+
                 .addFilterBefore(new JwtFilter(jwtUtils), BasicAuthenticationFilter.class)
                 .build();
     }

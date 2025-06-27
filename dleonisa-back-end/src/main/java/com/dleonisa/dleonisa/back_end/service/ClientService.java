@@ -1,6 +1,6 @@
 package com.dleonisa.dleonisa.back_end.service;
 
-import com.dleonisa.dleonisa.back_end.modelo.Clients;
+import com.dleonisa.dleonisa.back_end.modelo.entity.Clients;
 import com.dleonisa.dleonisa.back_end.modelo.dto.ClientDTO;
 import com.dleonisa.dleonisa.back_end.repository.ICliente;
 import org.springframework.beans.factory.annotation.Autowired;

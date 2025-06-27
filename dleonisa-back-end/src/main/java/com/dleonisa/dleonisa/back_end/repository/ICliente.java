@@ -1,6 +1,6 @@
 package com.dleonisa.dleonisa.back_end.repository;
 
-import com.dleonisa.dleonisa.back_end.modelo.Clients;
+import com.dleonisa.dleonisa.back_end.modelo.entity.Clients;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.dleonisa.dleonisa.back_end.modelo;
+package com.dleonisa.dleonisa.back_end.modelo.entity;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;

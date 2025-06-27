@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import "./Dashboard.scss";
 import { Sidebar } from "../../components/Sidebar";
-export const Dashboard = () => {
+export const Dashboard = () => { 
   return (
     <>
       <div className="container-fluid p-0">

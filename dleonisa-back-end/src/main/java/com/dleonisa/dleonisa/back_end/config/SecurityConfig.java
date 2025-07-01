@@ -44,9 +44,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // Permitir acceso público a login y registro (o lo que pongas en /auth/**)
                         .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers("/**").hasAnyRole("DEVELOPER","ADMIN")
 
                         // Requiere autenticación para todo lo demás
-                        .anyRequest().authenticated()
+                        //.anyRequest().authenticated()
                 )
 
                 .addFilterBefore(new JwtFilter(jwtUtils), BasicAuthenticationFilter.class)

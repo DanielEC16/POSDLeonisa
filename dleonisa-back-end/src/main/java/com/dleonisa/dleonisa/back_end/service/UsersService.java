@@ -1,5 +1,6 @@
 package com.dleonisa.dleonisa.back_end.service;
 
+import com.dleonisa.dleonisa.back_end.modelo.dto.UsersDTO;
 import com.dleonisa.dleonisa.back_end.modelo.entity.Role;
 import com.dleonisa.dleonisa.back_end.modelo.entity.Users;
 import com.dleonisa.dleonisa.back_end.modelo.dto.auth.AuthCreateUser;
@@ -41,7 +42,18 @@ public class UsersService implements UserDetailsService {
     @Autowired
     private IRole iRole;
 
-    @Override
+    public List<UsersDTO> listarUsuarios(){
+        List<Users> usuarios = iUser.findAll();
+        return usuarios.stream()
+                .map(usuario -> new UsersDTO(
+                        usuario.getNombre(),
+                        usuario.getApellido(),
+                        usuario.getDni(),
+                        usuario.getRole().getName()
+                )).toList();
+    }
+
+    //@Override
     public UserDetails loadUserByUsername(String username) {
 
         Users users = iUser.findUserEntityByUsername(username).orElseThrow(() -> new UsernameNotFoundException("El usuario " + username + " no existe."));
@@ -65,16 +77,20 @@ public class UsersService implements UserDetailsService {
         String apellido = createRoleRequest.apellido();
         String dni = createRoleRequest.dni();
 
-        Optional<Role> role = iRole.findByName(rolesRequest);
-
-        if (role.isEmpty()) {
-            throw new IllegalArgumentException("The roles specified does not exist.");
+        // Verificar si el usuario ya existe
+        if (iUser.existsByUsername(username)) {
+            throw new IllegalArgumentException("El usuario ya existe.");
         }
 
+        // Verificar si el rol existe
+        Role role = iRole.findByName(rolesRequest)
+                .orElseThrow(() -> new IllegalArgumentException("El rol especificado no existe."));
+
+        // Crear nuevo usuario
         Users usuarioNuevo = Users.builder()
                 .username(username)
                 .password(passwordEncoder.encode(password))
-                .role(role.get())
+                .role(role)
                 .nombre(nombre)
                 .apellido(apellido)
                 .dni(dni)

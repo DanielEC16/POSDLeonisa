@@ -7,13 +7,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/method")
 public class TestAuthController {
 
-    @PreAuthorize("permitAll()")
     @GetMapping("/get")
     public String helloGet(){
         return "Hello Wo - GET";
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/post")
     public String helloPost(){
         return "Hello World - POST";
@@ -24,13 +22,11 @@ public class TestAuthController {
         return "Hello World - PUT";
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN', 'CAJERO')")
     @DeleteMapping("/delete")
     public String helloDelete(){
         return "Hello World - DELETE";
     }
 
-    @PreAuthorize("hasAnyRole('DEVELOPER')")
     @PatchMapping("/patch")
     public String helloPatch(){
         return "Hello World - PATCH";

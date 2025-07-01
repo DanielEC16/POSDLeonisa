@@ -16,10 +16,6 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
-    @Column(name = "nombre" ,nullable = false,columnDefinition = "CHAR(10)")
+    @Column(name = "nombre" ,unique = true)
     private String nombre;
-    @JsonIgnore
-    @OneToMany(mappedBy = "categoria",cascade = CascadeType.ALL)
-    private List<Product> productos = new ArrayList<>();
-
 }

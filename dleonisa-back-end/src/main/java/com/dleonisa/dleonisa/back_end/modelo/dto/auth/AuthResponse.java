@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
         "username",
         "message",
-        "rol",
         "jwt"
 })
 public record AuthResponse(String username,

@@ -10,14 +10,6 @@ import java.util.List;
 
 @Getter
 @Setter
-@JsonPropertyOrder({
-        "id",
-        "nombre",
-        "descripcion",
-        "precio",
-        "categoria",
-        "sabores"
-})
 @Entity
 @Table(name = "productos")
 public class Product {

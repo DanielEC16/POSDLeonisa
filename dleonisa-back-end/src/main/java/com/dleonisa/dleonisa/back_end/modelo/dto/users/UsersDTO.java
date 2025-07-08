@@ -1,6 +1,4 @@
-package com.dleonisa.dleonisa.back_end.modelo.dto;
-
-import com.dleonisa.dleonisa.back_end.modelo.entity.Role;
+package com.dleonisa.dleonisa.back_end.modelo.dto.users;
 
 public record UsersDTO(
         String nombre,

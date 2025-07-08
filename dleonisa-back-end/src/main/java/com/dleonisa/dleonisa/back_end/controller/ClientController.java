@@ -1,7 +1,6 @@
 package com.dleonisa.dleonisa.back_end.controller;
 
-import com.dleonisa.dleonisa.back_end.modelo.dto.ClientDTO;
-import com.dleonisa.dleonisa.back_end.modelo.dto.error.ErrorDTO;
+import com.dleonisa.dleonisa.back_end.modelo.dto.client.ClientDTO;
 import com.dleonisa.dleonisa.back_end.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -2,7 +2,7 @@ package com.dleonisa.dleonisa.back_end.service;
 
 import com.dleonisa.dleonisa.back_end.modelo.entity.Flavors;
 import com.dleonisa.dleonisa.back_end.modelo.entity.Product;
-import com.dleonisa.dleonisa.back_end.modelo.dto.ProductDTO;
+import com.dleonisa.dleonisa.back_end.modelo.dto.product.ProductDTO;
 import com.dleonisa.dleonisa.back_end.repository.IProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

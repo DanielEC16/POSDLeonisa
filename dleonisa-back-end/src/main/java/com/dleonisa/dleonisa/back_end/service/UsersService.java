@@ -1,6 +1,6 @@
 package com.dleonisa.dleonisa.back_end.service;
 
-import com.dleonisa.dleonisa.back_end.modelo.dto.UsersDTO;
+import com.dleonisa.dleonisa.back_end.modelo.dto.users.UsersDTO;
 import com.dleonisa.dleonisa.back_end.modelo.entity.Role;
 import com.dleonisa.dleonisa.back_end.modelo.entity.Users;
 import com.dleonisa.dleonisa.back_end.modelo.dto.auth.AuthCreateUser;
@@ -25,7 +25,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UsersService implements UserDetailsService {

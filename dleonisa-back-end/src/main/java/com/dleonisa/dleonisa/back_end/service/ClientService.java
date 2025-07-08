@@ -2,13 +2,12 @@ package com.dleonisa.dleonisa.back_end.service;
 
 import com.dleonisa.dleonisa.back_end.modelo.dto.error.ErrorDTO;
 import com.dleonisa.dleonisa.back_end.modelo.entity.Clients;
-import com.dleonisa.dleonisa.back_end.modelo.dto.ClientDTO;
+import com.dleonisa.dleonisa.back_end.modelo.dto.client.ClientDTO;
 import com.dleonisa.dleonisa.back_end.repository.ICliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service

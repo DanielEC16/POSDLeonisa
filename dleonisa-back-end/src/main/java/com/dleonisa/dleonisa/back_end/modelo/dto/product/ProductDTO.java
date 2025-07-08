@@ -1,4 +1,4 @@
-package com.dleonisa.dleonisa.back_end.modelo.dto;
+package com.dleonisa.dleonisa.back_end.modelo.dto.product;
 
 import java.util.List;
 

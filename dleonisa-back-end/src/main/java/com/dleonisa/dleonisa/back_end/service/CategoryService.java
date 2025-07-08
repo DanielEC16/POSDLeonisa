@@ -1,6 +1,6 @@
 package com.dleonisa.dleonisa.back_end.service;
 
-import com.dleonisa.dleonisa.back_end.modelo.dto.CategoryDTO;
+import com.dleonisa.dleonisa.back_end.modelo.dto.category.CategoryDTO;
 import com.dleonisa.dleonisa.back_end.modelo.entity.Category;
 import com.dleonisa.dleonisa.back_end.repository.ICategory;
 import org.springframework.beans.factory.annotation.Autowired;

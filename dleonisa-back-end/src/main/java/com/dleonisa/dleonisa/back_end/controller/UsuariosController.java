@@ -1,8 +1,7 @@
 package com.dleonisa.dleonisa.back_end.controller;
 
-import com.dleonisa.dleonisa.back_end.modelo.dto.UsersDTO;
+import com.dleonisa.dleonisa.back_end.modelo.dto.users.UsersDTO;
 import com.dleonisa.dleonisa.back_end.service.UsersService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

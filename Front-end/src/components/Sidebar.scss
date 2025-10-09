@@ -5,7 +5,7 @@
     transition: all .4s ease-in-out;
     width: 270px;
     height: 100vh;
-    background-color: #fff;
+    background-color: $asph-950;
     box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
@@ -44,6 +44,7 @@
                 font-family: $fuente-secundaria;
                 font-size: 15px;
                 margin-bottom: 0;
+
             }
         }
 
@@ -61,7 +62,6 @@
         max-height: calc(100vh - 275px);
         overflow-y: auto;
         overflow-x: hidden;
-
         &::-webkit-scrollbar {
             width: 6px; // Ancho del scroll vertical
         }
@@ -78,13 +78,15 @@
         ul {
             list-style: none;
             padding-left: 0;
-
+            display: grid;
+            gap: 10px;
             a {
                 font-size: 20px;
                 font-family: $fuente-secundaria;
                 font-weight: 500;
                 text-decoration: none;
-                color: $asph-950;
+                color: $asph-100;
+                border: 1px solid $asph-100;
                 display: flex;
                 align-items: center;
                 gap: 10px;

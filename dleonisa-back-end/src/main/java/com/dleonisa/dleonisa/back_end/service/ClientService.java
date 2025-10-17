@@ -1,7 +1,7 @@
 package com.dleonisa.dleonisa.back_end.service;
 
 import com.dleonisa.dleonisa.back_end.modelo.dto.error.ErrorDTO;
-import com.dleonisa.dleonisa.back_end.modelo.entity.Clients;
+import com.dleonisa.dleonisa.back_end.modelo.entity.Cliente;
 import com.dleonisa.dleonisa.back_end.modelo.dto.client.ClientDTO;
 import com.dleonisa.dleonisa.back_end.repository.ICliente;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +17,10 @@ public class ClientService {
 
     //Listar Todos los Clientes Registrados
     public List<ClientDTO> listarClientes(){
-        List<Clients> clients = iCliente.findAll();
+        List<Cliente> clients = iCliente.findAll();
         return clients.stream()
                 .map(client -> new ClientDTO(
-                        null,
+                        client.getId(),
                         client.getNombre(),
                         client.getApellido(),
                         client.getDni()
@@ -32,12 +32,12 @@ public class ClientService {
         if(iCliente.existsByDni(clientDTO.dni())){
             return new ErrorDTO("El cliente con este DNI ya existe");
         }
-        Clients clienteNuevo = Clients.builder()
+        Cliente clienteNuevo = Cliente.builder()
                 .nombre(clientDTO.nombre())
                 .apellido(clientDTO.apellido())
                 .dni(clientDTO.dni())
                 .build();
-        Clients clientSaved = iCliente.save(clienteNuevo);
+        Cliente clientSaved = iCliente.save(clienteNuevo);
         return new ErrorDTO("Creado correctamente");
     }
 
@@ -46,17 +46,17 @@ public class ClientService {
         if (clientDTO.dni()==null || clientDTO.dni().trim().isEmpty()){
             return new ErrorDTO("Inserte un DNI valido");
         }
-        Optional<Clients> clienteOriginal = iCliente.findById(clientDTO.id());
+        Optional<Cliente> clienteOriginal = iCliente.findById(clientDTO.id());
         if (clienteOriginal.isEmpty()) {
             return new ErrorDTO("El cliente que intenta editar no existe");
         }
 
-        Optional<Clients> clienteConMismoDni = iCliente.findByDni(clientDTO.dni());
+        Optional<Cliente> clienteConMismoDni = iCliente.findByDni(clientDTO.dni());
         if (clienteConMismoDni.isPresent() &&
                 !clienteConMismoDni.get().getId().equals(clientDTO.id())) {
             return new ErrorDTO("Ese DNI ya está siendo usado por otro cliente");
         }
-        Clients cliente = clienteOriginal.get();
+        Cliente cliente = clienteOriginal.get();
         cliente.setNombre(clientDTO.nombre());
         cliente.setApellido(clientDTO.apellido());
         cliente.setDni(clientDTO.dni());

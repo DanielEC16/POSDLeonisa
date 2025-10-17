@@ -20,6 +20,16 @@ export const Sidebar = () => {
             name: "Productos",
             path: "/productos",
             icon: "fa-solid fa-cake-candles"
+        },
+        {
+            name: "Ventas",
+            path: "/ventas",
+            icon: "fa-solid fa-chart-line"
+        },
+        {
+            name :"Registrar Venta",
+            path: "/registrar-venta",
+            icon: "fa-solid fa-cart-arrow-down"
         }
     ]
     return (

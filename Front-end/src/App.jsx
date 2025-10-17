@@ -9,6 +9,8 @@ import { useEffect } from "react";
 import { isTokenExpired } from "./utils/checkToken";
 import "./App.scss";
 import { useState } from "react";
+import { RegistrarVenta } from "./pages/Dashboard/views/RegistrarVentas/RegistrarVenta";
+import { Ventas } from "./pages/Dashboard/views/Ventas/Ventas";
 
 export default function App() {
   const navigate = useNavigate();
@@ -56,6 +58,8 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="productos" element={<Productos />} />
           <Route path="clientes" element={<Clientes />} />
+          <Route path="ventas" element={<Ventas />} />
+          <Route path="registrar-venta" element={<RegistrarVenta />} />
         </Route>
 
         {/* Cualquier otra ruta */}

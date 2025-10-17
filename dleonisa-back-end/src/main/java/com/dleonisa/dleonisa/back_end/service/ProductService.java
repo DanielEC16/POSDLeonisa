@@ -1,7 +1,6 @@
 package com.dleonisa.dleonisa.back_end.service;
 
-import com.dleonisa.dleonisa.back_end.modelo.entity.Flavors;
-import com.dleonisa.dleonisa.back_end.modelo.entity.Product;
+import com.dleonisa.dleonisa.back_end.modelo.entity.Producto;
 import com.dleonisa.dleonisa.back_end.modelo.dto.product.ProductDTO;
 import com.dleonisa.dleonisa.back_end.repository.IProduct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,46 +16,9 @@ public class ProductService {
     @Autowired
     private IProduct iProduct;
 
-    public List<ProductDTO> listarProducts(){
-        List<Product> products = iProduct.findAll();
-        return products.stream()
-                .map(product -> new ProductDTO(
-                        product.getNombre(),
-                        product.getDescripcion(),
-                        product.getPrecio(),
-                        product.getCategoria().getNombre(),
-                        product.getSabores().stream()
-                                .map(Flavors::getNombre)
-                                .toList()
-                ))
+    public List<Producto> listarProductos(){
+        return iProduct.findAll().stream()
+                .filter(Producto::getEstado)
                 .toList();
     }
-    public  ProductDTO obtenerPorId(Long id){
-        Product product = iProduct.findById(id)
-                .orElseThrow(()->new RuntimeException("Producto no Encontrado"));
-
-        return new ProductDTO(
-                product.getNombre(),
-                product.getDescripcion(),
-                product.getPrecio(),
-                product.getCategoria().getNombre(),
-                product.getSabores().stream()
-                        .map(Flavors::getNombre)
-                        .toList()
-        );
-    }
-    public Page<ProductDTO> listarPaginable(int page, int size){
-        Pageable pageable = PageRequest.of(page, size);
-        Page<Product> productPage = iProduct.findAll(pageable);
-        return productPage.map(product -> new ProductDTO(
-                product.getNombre(),
-                product.getDescripcion(),
-                product.getPrecio(),
-                product.getCategoria().getNombre(),
-                product.getSabores().stream()
-                        .map(Flavors::getNombre)
-                        .toList()
-        ));
-    }
-
 }

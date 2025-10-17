@@ -54,21 +54,15 @@ public class UsersService implements UserDetailsService {
 
     //@Override
     public UserDetails loadUserByUsername(String username) {
-
         Users users = iUser.findUserEntityByUsername(username).orElseThrow(() -> new UsernameNotFoundException("El usuario " + username + " no existe."));
-
         String rol = "ROLE_" + users.getRole().getName();
-
         List<GrantedAuthority> authorities = AuthorityUtils.createAuthorityList(rol);
-
         return new User(
                 users.getUsername(),
                 users.getPassword(),
                 authorities);
     }
-
     public AuthResponse createUser(AuthCreateUser createRoleRequest) {
-
         String username = createRoleRequest.username();
         String password = createRoleRequest.password();
         String rolesRequest = createRoleRequest.role();
@@ -104,7 +98,6 @@ public class UsersService implements UserDetailsService {
         Authentication authentication = new UsernamePasswordAuthenticationToken(userSaved, null, authorities);
 
         AuthResponse authResponse = new AuthResponse(username, "Usuario creado correctamente con rol correspondiente", null);
-
         return authResponse;
     }
 
@@ -116,7 +109,7 @@ public class UsersService implements UserDetailsService {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         String accesToken = jwtUtils.createToken(authentication);
-        AuthResponse authResponse = new AuthResponse(username,"Usuario logueado",accesToken);
+        AuthResponse authResponse = new AuthResponse(null,null,accesToken);
         return authResponse;
     }
 

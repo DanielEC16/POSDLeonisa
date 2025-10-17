@@ -1,6 +1,7 @@
 package com.dleonisa.dleonisa.back_end.controller;
 
 import com.dleonisa.dleonisa.back_end.modelo.dto.product.ProductDTO;
+import com.dleonisa.dleonisa.back_end.modelo.entity.Producto;
 import com.dleonisa.dleonisa.back_end.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,22 +17,8 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/listarTodo")
-    public ResponseEntity<List<ProductDTO>> listarProducts(){
-        List<ProductDTO> productDTOS = productService.listarProducts();
-        return ResponseEntity.ok(productDTOS);
-    }
-    @GetMapping("/listar/{id}")
-    public ResponseEntity<ProductDTO> obtenerPorId(@PathVariable Long id){
-        ProductDTO productDTO = productService.obtenerPorId(id);
-        return ResponseEntity.ok(productDTO);
+    public List<Producto> listarProductos(){
+        return productService.listarProductos();
     }
 
-    @GetMapping("/listar")
-    public ResponseEntity<Page<ProductDTO>> listarProductPaginados(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
-    ){
-        Page<ProductDTO> productDTO = productService.listarPaginable(page, size);
-        return ResponseEntity.ok(productDTO);
-    }
 }

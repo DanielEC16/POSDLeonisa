@@ -1,7 +1,6 @@
-@use "../../../styles/colors.scss" as *;
-@use "../../../styles/fonts.scss" as *;
-
-.productos-panel {
+@use "../../../../styles/colors.scss" as *;
+@use "../../../../styles/fonts.scss" as *;
+.ventas-panel {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -42,103 +41,7 @@
             }
         }
     }
-    .filter-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 20px;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        .input-search {
-            width: 350px;
-            padding: 5px 15px;
-            outline: none;
-            border: 2px solid transparent;
-            border-radius: 10px;
-            background-image:
-                linear-gradient(white, white),
-                linear-gradient(90deg, #4068ff, #4d00ad);
-            background-origin: border-box;
-            background-clip: padding-box, border-box;
-            transition: all 0.3s ease;
-            font-size: 18px;
-            &:focus {
-                background-image:
-                    linear-gradient(#f5f8ff, #f5f8ff),
-                    linear-gradient(90deg, #6491ff, #1f3cff);
-                box-shadow: 0 0 8px rgba(64, 104, 255, 0.4);
-            }
-            &:invalid {
-                color: #000;
-            }
-        }
-        .export {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            button {
-                background-color: #fff;
-                border: 2px solid $asph-800;
-                color: $asph-800;
-                border-radius: 10px;
-                font-weight: bold;
-                transition: all .4s ease-in-out;
-                text-transform: uppercase;
-                padding: 6px 25px;
-                letter-spacing: .5px;
-                &:hover {
-                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-                    color: $asph-50;
-                    background-color: $asph-900;
-                }
-            }
-        }
-    }
-    .table-productos {
-        background-color: #fff;
-        border-radius: 10px;
-        overflow: hidden;
-        border: .5px solid $ultramarine-800;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        table {
-            width: 100%;
-            vertical-align: middle;
-            margin: 0 !important;
-            border-collapse: collapse;
-            border-spacing: 0;
-            tbody tr {
-                border-bottom: 1px solid $ultramarine-800;
-                &:last-child {
-                    border-bottom: none;
-                }
-            }
-            tbody tr:nth-child(odd) {
-                background-color: $ultramarine-50;
-            }
-            tbody tr:nth-child(even) {
-                background-color: #fff;
-            }
-            tbody tr:hover {
-                background-color: #aaa6a644;
-                color: $asph-950;
-            }
-            th,
-            td {
-                padding: 8px 20px;
-                font-weight: 950;
-                font-size: 17px;
-            }
-            thead tr {
-                --bs-table-bg: transparent;
-                --bs-table-color: none;
-                color: #fff;
-                background-color: $ultramarine-900 !important;
-            }
-        }
-    }
-    .cards-clients {
+    .cards-ventas {
         display: grid;
         gap: 10px;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -156,6 +59,66 @@
                 font-size: 20px;
                 font-weight: bold;
                 margin: 0;
+            }
+        }
+    }
+    .filter-container {
+        display: grid;
+        padding:  20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        gap: 10px;
+        .search-input {
+            padding: 5px 15px;
+            outline: none;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            background-image:
+                linear-gradient(white, white),
+                linear-gradient(90deg, $asph-700, $ultramarine-600);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            &:focus {
+                background-image:
+                    linear-gradient(#f5f8ff, #f5f8ff),
+                    linear-gradient(90deg, #6473ff, #1f66ff);
+                box-shadow: 0 0 8px rgba(1, 21, 83, 0.4);
+            }
+        }
+        .filters{
+            display: flex;
+            .metodo-pago {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .export {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            hr{
+                height: 100%;
+                border: 1px solid #00000062;
+            }
+            button {
+                background-color: #fff;
+                border: 2px solid $asph-800;
+                color: $asph-800;
+                border-radius: 10px;
+                font-weight: bold;
+                transition: all .4s ease-in-out;
+                text-transform: uppercase;
+                padding: 6px 25px;
+                letter-spacing: .5px;
+                &:hover {
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+                    color: $asph-50;
+                    background-color: $asph-900;
+                }
             }
         }
     }

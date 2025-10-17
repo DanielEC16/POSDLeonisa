@@ -3,6 +3,8 @@ package com.dleonisa.dleonisa.back_end.modelo.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @Builder
@@ -10,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "clientes")
-public class Clients {
+public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
@@ -20,4 +22,9 @@ public class Clients {
     private String apellido;
     @Column(name = "dni_cliente",unique = true)
     private String dni;
+    @Column(name = "telefono")
+    private String telefono;
+    @Column(name = "fecha_creacion", updatable = false)
+    @org.hibernate.annotations.CreationTimestamp
+    private LocalDateTime fechaCreacion;
 }

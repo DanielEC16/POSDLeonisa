@@ -1,11 +1,14 @@
 package com.dleonisa.dleonisa.back_end.modelo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "detalle_venta")
 public class DetalleVenta {
@@ -14,10 +17,11 @@ public class DetalleVenta {
     private Long Id;
     @ManyToOne
     @JoinColumn(name = "venta_id")
+    @JsonBackReference
     private Venta venta;
     @ManyToOne
     @JoinColumn(name = "producto_id")
-    private Product producto;
+    private Producto producto;
     @Column(name = "cantidad")
     private int cantidad;
     @Column(name = "precio_unitario")

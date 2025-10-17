@@ -1,8 +1,8 @@
 import { useTitle } from "../../../hooks/useTitle";
-import { Mybarchart } from "../../../components/Mybarchart";
 import "./Home.scss";
-import { Linechart } from "../../../components/Linechart";
-import { Multiaxischart } from "../../../components/Multiaxischart";
+import { Mybarchart } from "../../../components/Graficos/Mybarchart";
+import { Linechart } from "../../../components/Graficos/Linechart";
+import { Multiaxischart } from "../../../components/Graficos/Multiaxischart";
 import { jwtDecode } from "jwt-decode";
 export const Home = () => {
   useTitle("Dashboard | Home");

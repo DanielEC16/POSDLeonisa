@@ -3,6 +3,7 @@ package com.dleonisa.dleonisa.back_end.modelo.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -25,6 +26,5 @@ public class Cliente {
     @Column(name = "telefono")
     private String telefono;
     @Column(name = "fecha_creacion", updatable = false)
-    @org.hibernate.annotations.CreationTimestamp
-    private LocalDateTime fechaCreacion;
+    private LocalDate fechaCreacion = LocalDate.now();
 }

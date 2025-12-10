@@ -21,4 +21,8 @@ public class ProductService {
                 .filter(Producto::getEstado)
                 .toList();
     }
+
+    public Producto buscarPorCodigo(String codProd){
+        return iProduct.findByCodigo(codProd).orElse(null);
+    }
 }

@@ -13,3 +13,17 @@ export const getProducts = async () => {
     if(!response.ok) throw new Error("Error al obtener productos");
     return await response.json()
 }
+
+export const getProductsByCode = async (code) => {
+    const token = localStorage.getItem('token');
+
+    const response = await fetch(`${API_URL}/buscar-${code}`,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+            ,'Authorization': `Bearer ${token}`
+        }
+    })
+    if(!response.ok) throw new Error("Error al obtener productos");
+    return await response.json()
+}

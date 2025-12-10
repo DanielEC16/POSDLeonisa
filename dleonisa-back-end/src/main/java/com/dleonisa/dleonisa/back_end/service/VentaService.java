@@ -25,7 +25,8 @@ public class VentaService {
                         venta.getMetodoDePago().name(),
                         venta.getTotal(),
                         venta.getCliente().getDni(),
-                        venta.getVendedor().getDni()
+                        venta.getCliente().getNombre()+" "+venta.getCliente().getApellido(),
+                        venta.getVendedor().getNombre()+" "+venta.getVendedor().getApellido()
                 )).toList();
     }
 }

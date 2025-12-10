@@ -8,5 +8,6 @@ public record VentaDTO(Long id,
                        String metodo_pago,
                        double total,
                        String cliente_dni,
-                       String vendedor_dni){
+                       String cliente_nombre,
+                       String vendedor){
 }

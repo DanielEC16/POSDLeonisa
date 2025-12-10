@@ -81,8 +81,9 @@ export const Clientes = () => {
             <thead>
               <tr className="text-center">
                 <th>#</th>
-                <th>Nombre Completo</th>
+                <th className="text-start">Nombre Completo</th>
                 <th>DNI</th>
+                <th>Fecha Cracion</th>
                 <th>Acciones</th>
               </tr>
             </thead>
@@ -92,6 +93,7 @@ export const Clientes = () => {
                   <td className="text-center">{index + 1}</td>
                   <td>{cliente.nombre + ' ' + cliente.apellido}</td>
                   <td className="text-center">{cliente.dni}</td>
+                  <td className="text-center">{cliente.fechaCreacion}</td>
                   <td>
                     <div className="d-flex justify-content-center gap-2">
                       <button

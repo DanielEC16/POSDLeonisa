@@ -122,4 +122,46 @@
             }
         }
     }
+    .table-ventas {
+        background-color: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        border: .5px solid $ultramarine-800;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        table {
+            width: 100%;
+            vertical-align: middle;
+            margin: 0 !important;
+            border-collapse: collapse;
+            border-spacing: 0;
+            tbody tr {
+                border-bottom: 1px solid $ultramarine-800;
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+            tbody tr:nth-child(odd) {
+                background-color: $ultramarine-50;
+            }
+            tbody tr:nth-child(even) {
+                background-color: #fff;
+            }
+            tbody tr:hover {
+                background-color: #aaa6a644;
+                color: $asph-950;
+            }
+            th,
+            td {
+                padding: 8px 20px;
+                font-weight: 950;
+                font-size: 17px;
+            }
+            thead tr {
+                --bs-table-bg: transparent;
+                --bs-table-color: none;
+                color: #fff;
+                background-color: $ultramarine-900 !important;
+            }
+        }
+    }
 }

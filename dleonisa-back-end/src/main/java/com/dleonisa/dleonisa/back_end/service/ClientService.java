@@ -14,31 +14,27 @@ import java.util.Optional;
 public class ClientService {
     @Autowired
     private ICliente iCliente;
+    @Autowired
+    private ReniecApiService reniecApiService;
 
     //Listar Todos los Clientes Registrados
-    public List<ClientDTO> listarClientes(){
+    public List<Cliente> listarClientes(){
         List<Cliente> clients = iCliente.findAll();
-        return clients.stream()
-                .map(client -> new ClientDTO(
-                        client.getId(),
-                        client.getNombre(),
-                        client.getApellido(),
-                        client.getDni()
-                )).toList();
+        return iCliente.findAll();
     }
 
     //Guardando un cliente
-    public Object createClient(ClientDTO clientDTO){
-        if(iCliente.existsByDni(clientDTO.dni())){
-            return new ErrorDTO("El cliente con este DNI ya existe");
+    public Cliente nuevoCliente(Cliente cliente){
+        //Buscando si ya existe un cliente con ese DNI
+        boolean existe = iCliente.findByDni(cliente.getDni()).isPresent();
+        if(existe){
+            throw new RuntimeException("El DNI ya esta registrado");
         }
-        Cliente clienteNuevo = Cliente.builder()
-                .nombre(clientDTO.nombre())
-                .apellido(clientDTO.apellido())
-                .dni(clientDTO.dni())
-                .build();
-        Cliente clientSaved = iCliente.save(clienteNuevo);
-        return new ErrorDTO("Creado correctamente");
+        return iCliente.save(cliente);
+    }
+
+    public Cliente buscarCrearClientePorDni(String dni){
+        Optional<Cliente> existe =
     }
 
     //Cambiando valores de un cliente registrado

@@ -21,4 +21,12 @@ public class ProductController {
         return productService.listarProductos();
     }
 
+    @GetMapping("/buscar-{codigo}")
+    public ResponseEntity<?> buscarPorCodigo(@PathVariable String codigo){
+        Producto p = productService.buscarPorCodigo(codigo);
+        if(p==null|| p.getStock()==0){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(p);
+    }
 }
